@@ -1,6 +1,10 @@
-import tw from "tailwind-styled-components";
-import { Container } from "./styles/conteiner";
+import { Container } from "./styles";
+import { Header } from "@/components/header";
 
-export default function Store() {
-  return <Container>Store</Container>;
+export function Store() {
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 }
