@@ -1,28 +1,45 @@
 import tw from "tailwind-styled-components";
 
-const NavBar = tw.div`
+const NavBar = tw.nav`
+  text-neo
   flex
-  justify-around
   items-center
-  w-full
+  justify-between
   p-4
+  w-full
   bg-white
-  shadow-lg
+  shadow-md
+  lg:justify-around
+  lg:shadow-sm
 `;
 
 const Container = tw.div`
   flex 
-  gap-10
+  gap-4
+  lg:gap-10
 `;
 
 const List = tw.ul`
-  flex
-  gap-12
-  pl-10
+  hidden
+  md:flex-row
+  lg:pl-10
+  lg:gap-12
+  lg:flex
 `;
 
 const ListItem = tw.li`
+  hidden
   text-lg
+  lg:flex
 `;
 
-export { NavBar, List, ListItem, Container };
+const Circle = tw.circle`
+  stroke-none
+  lg:stroke-black
+`;
+
+const Button = tw.button`
+
+`;
+
+export { NavBar, List, ListItem, Container, Circle, Button };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
+import { NeoSans } from "@/app/fonts";
 import "./globals.css";
 
 const lato = Lato({ 
@@ -7,6 +8,7 @@ const lato = Lato({
   weight: ['100', '300', '400', '700', '900' ],
   style: ['italic', 'normal']
  });
+
 
 export const metadata: Metadata = {
   title: "Wine",
@@ -19,7 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lato.className}>{children}</body>
+      <body className={lato.className}>
+        {children}
+      </body>
     </html>
   );
 }

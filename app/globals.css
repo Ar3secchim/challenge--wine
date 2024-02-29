@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "NeoSans";
+  src: url("./fonts.ts") format("woff");
+}
+
 :root {
   background: rgba(245, 245, 245, 1);
 }
@@ -10,4 +15,8 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.text-neo{
+  font-family: "NeoSans-Regular";
 }
