@@ -1,9 +1,9 @@
+import { HtmlHTMLAttributes } from "react";
 import { ButtonStyle } from "./style";
 
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: boolean;
   link?: boolean;
-  children?: any;
 }
 
 export function Button({ icon, link, children }: ButtonProps) {
