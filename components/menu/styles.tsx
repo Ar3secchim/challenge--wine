@@ -1,19 +1,5 @@
 import tw from "tailwind-styled-components";
 
-interface ButtonProps {
-  $icon?: boolean;
-  $link?: boolean;
-}
-
-const Button = tw.button<ButtonProps>`
-    ${(i) => (i.$icon ? "p-2 gap-1 items-center flex-col justify-around" : "")}
-    ${(i) => (i.$link ? " text-[#D14B8F] font-bold" : "")}
-
-    flex
-    text-sm
-    lg:hidden
-`;
-
 const Line = tw.span`
   w-6
   h-1
@@ -34,6 +20,7 @@ const MenuBar = tw.div`
 
   bg-[#F5F5F5]
   shadow-lg
+  z-50
 `;
 
 const Container = tw.div`
@@ -62,4 +49,4 @@ const ListItem = tw.li`
   text-lg
 `;
 
-export { Line, Container, List, ListItem, MenuBar, Button, Section };
+export { Line, Container, List, ListItem, MenuBar, Section };

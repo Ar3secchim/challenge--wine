@@ -12,7 +12,7 @@ export function SearchBar({ searchChange, searchTerm }) {
           onChange={searchChange}
         />
 
-        <Button icon={true}>
+        <Button link={true} >
           aperte enter para buscar
           <svg
             width="46"

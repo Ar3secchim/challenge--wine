@@ -4,15 +4,8 @@ import Image from "next/image";
 import CloseIcon from "@/assets/icons/close.svg";
 import User from "@/assets/icons/conta.svg";
 
-import {
-  Container,
-  Line,
-  List,
-  ListItem,
-  MenuBar,
-  Button,
-  Section,
-} from "./styles";
+import { Container, Line, List, ListItem, MenuBar, Section } from "./styles";
+import { Button } from "../button";
 
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +16,7 @@ export function Menu() {
 
   return (
     <>
-      <Button $icon={true} onClick={handleClick}>
+      <Button icon={true} OnClick={handleClick}>
         <Line></Line>
         <Line></Line>
         <Line></Line>
@@ -39,12 +32,12 @@ export function Menu() {
                 alt="icon de um desenho de um usuário"
               />
               <div>
-                <Button $icon={false}>Entre na sua conta</Button>
-                <Button $link={true}>Entrar &gt;</Button>
+                <Button>Entre na sua conta</Button>
+                <Button link={true}>Entrar &gt;</Button>
               </div>
             </Section>
 
-            <Button $icon={true} onClick={handleClick}>
+            <Button icon={true}  OnClick={handleClick}>
               <Image width={22} src={CloseIcon} alt="icon x " />
             </Button>
           </Container>
@@ -61,4 +54,3 @@ export function Menu() {
     </>
   );
 }
-
