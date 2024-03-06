@@ -20,6 +20,8 @@ const ContainerGrid = tw.section`
   grid-rows-1 
   gap-4
   mt-10
+  md:mx-8
+  sm:mx-8
 `;
 
 const ContainerSubGrid = tw.section`

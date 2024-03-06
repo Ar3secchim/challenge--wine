@@ -11,6 +11,7 @@ import {
   Title,
 } from "./styles";
 import { Header } from "@/components/header";
+import { Pagination } from "@/components/pagination";
 
 export default function Store() {
   return (
@@ -55,6 +56,7 @@ export default function Store() {
             <Card />
           </ContainerSubGrid>
         </ContainerGrid>
+        <Pagination />
       </Container>
     </main>
   );
