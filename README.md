@@ -1,18 +1,5 @@
-## Getting Started
+## Deploy on Vercel
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Requisitos do desafio
 O desafio será implementar um e-commerce para venda de vinhos que deverá ter as seguintes funcionalidades:
@@ -23,7 +10,7 @@ O desafio será implementar um e-commerce para venda de vinhos que deverá ter a
 - [] Adicionar e remover produtos do carrinho
 
 
-## Decisões para solução de casa requisito
+## Decisões para solução de cada requisito
 
 
 ## Deploy on Vercel
