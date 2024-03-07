@@ -1,34 +1,24 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-  flex
-  flex-col
-  w-full
+  grid
+  grid-cols-4
   mx-auto 
   max-w-6xl 
-  mb-4
+  my-6
 `;
 
 const ContainerFlex = tw.div`
   flex
   flex-col
-`;
-
-const ContainerGrid = tw.section`
-  grid 
-  grid-cols-4 
-  grid-rows-1 
-  gap-4
-  mt-10
-  md:mx-8
-  sm:mx-8
+  col-span-3  
 `;
 
 const ContainerSubGrid = tw.section`
- col-span-3 
- flex 
- flex-col 
- gap-4
+  col-span-3
+  flex
+  flex-wrap
+  gap-8
 `;
 
 const Title = tw.h1`
@@ -94,7 +84,6 @@ const SpanContainer = tw.span`
 export {
   Container,
   ContainerFlex,
-  ContainerGrid,
   ContainerSubGrid,
   Title,
   SubTitle,
