@@ -16,12 +16,12 @@ const ContainerFlex = tw.div`
 
 const ContainerSubGrid = tw.section`
   col-span-3
-  flex justify-center
+  flex lg:justify-normal justify-center
   flex-wrap
   gap-8
 `;
 
-const ToogleList = tw.section`
+const ToogleListContainer = tw.section`
   lg:flex
   lg:flex-col
   md:flex
@@ -61,44 +61,6 @@ const SpanProduts = tw.span`
   gap-1
 `;
 
-const ListItem = tw.li`
-  flex
-  items-center
-  list-none
-  gap-2
-  text-base
-  my-3
-`;
-
-const InputCheckbox = tw.input`
-  appearance-none 
-  peer  
-  h-5 w-5 
-  cursor-pointer 
-  rounded-full 
-  border-2 border-zinc-600 
-  transition-all before:absolute 
-  checked:border-pink-700 checked:bg-pink-700 checked:before:bg-pink-700 hover:before:opacity-10
-`;
-
-const LabelInput = tw.label`
-  relative 
-  flex 
-  items-center  
-  rounded-full 
-  cursor-pointer
-`;
-
-const SpanContainer = tw.span`
-  absolute
-  text-white 
-  transition-opacity -translate-y-2/4 -translate-x-2/4 
-  opacity-0 
-  pointer-events-none 
-  top-2/4 left-2/4  
-  peer-checked:opacity-100
-`;
-
 const Button = tw.button`
   flex md:hidden
   items-center
@@ -119,11 +81,7 @@ export {
   SubTitle,
   Text,
   Span,
-  ListItem,
-  InputCheckbox,
-  LabelInput,
-  SpanContainer,
-  ToogleList,
+  ToogleListContainer,
   SpanProduts,
   Button,
 };

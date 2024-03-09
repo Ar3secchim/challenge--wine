@@ -44,9 +44,7 @@ export function Card({
         <Title>{name}</Title>
 
         <ContainerFlex>
-          <TextPriceUnderline>
-            {formatStringInPrice(price * 10)}
-          </TextPriceUnderline>
+          <TextPriceUnderline>{formatStringInPrice(price)}</TextPriceUnderline>
           <Tag>{promotion} %OFF</Tag>
         </ContainerFlex>
 

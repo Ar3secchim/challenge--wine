@@ -46,7 +46,7 @@
       "grape_varieties": ["Chardonnay", "Pinot Noir"],
       "price": 75.0,
       "discount_for_members": 10,
-      "promotion": 0
+      "promotion": 10
     },
     {
       "id": 5,
@@ -69,7 +69,7 @@
       "year": 2023,
       "grape_varieties": ["Riesling"],
       "price": 45.0,
-      "discount_for_members": 0,
+      "discount_for_members": 20,
       "promotion": 10
     },
     {
@@ -82,7 +82,7 @@
       "grape_varieties": ["Chardonnay", "Pinot Noir"],
       "price": 75.0,
       "discount_for_members": 10,
-      "promotion": 0
+      "promotion": 10
     },
     {
       "id": 8,
@@ -103,7 +103,7 @@
       "region": "Mosel",
       "country": "Alemanha",
       "price": 45.0,
-      "discount_for_members": 0,
+      "discount_for_members": 20,
       "promotion": 10
     },
     {
@@ -111,9 +111,9 @@
       "name": "Vinho Tinto Malbec 2019",
       "type": "Tinto",
       "region": "Mendoza",
-      "country": "Argentina",
       "year": 2019,
       "grape_varieties": ["Malbec"],
+      "country": "Argentina",
       "price": 60.0,
       "discount_for_members": 5,
       "promotion": 20
@@ -127,8 +127,8 @@
       "year": 2022,
       "grape_varieties": ["Moscato"],
       "price": 25.0,
-      "discount_for_members": 0,
-      "promotion": 0
+      "discount_for_members": 10,
+      "promotion": 10
     },
     {
       "id": 12,
@@ -151,8 +151,8 @@
       "year": 2019,
       "grape_varieties": ["Chardonnay"],
       "price": 50.0,
-      "discount_for_members": 0,
-      "promotion": 0
+      "discount_for_members": 10,
+      "promotion": 5
     },
     {
       "id": 14,
@@ -176,7 +176,7 @@
       "grape_varieties": ["Verdejo"],
       "price": 35.0,
       "discount_for_members": 15,
-      "promotion": 0
+      "promotion": 5
     },
     {
       "id": 16,
@@ -199,7 +199,7 @@
       "year": 2018,
       "grape_varieties": ["Cabernet Franc"],
       "price": 45.0,
-      "discount_for_members": 0,
+      "discount_for_members": 10,
       "promotion": 10
     },
     {
@@ -212,7 +212,7 @@
       "grape_varieties": ["Viognier"],
       "price": 65.0,
       "discount_for_members": 10,
-      "promotion": 0
+      "promotion": 25
     },
     {
       "id": 19,
@@ -247,8 +247,8 @@
       "year": 2019,
       "grape_varieties": ["Syrah"],
       "price": 55.0,
-      "discount_for_members": 0,
-      "promotion": 0
+      "discount_for_members": 10,
+      "promotion": 5
     },
     {
       "id": 22,
@@ -260,7 +260,7 @@
       "grape_varieties": ["Pinot Grigio"],
       "price": 35.0,
       "discount_for_members": 10,
-      "promotion": 0
+      "promotion": 5
     },
     {
       "id": 23,
@@ -272,7 +272,7 @@
       "grape_varieties": ["Garnacha"],
       "price": 30.0,
       "discount_for_members": 15,
-      "promotion": 0
+      "promotion": 10
     },
     {
       "id": 24,
@@ -296,7 +296,7 @@
       "grape_varieties": ["Gewürztraminer"],
       "price": 50.0,
       "discount_for_members": 0,
-      "promotion": 0
+      "promotion": 25
     },
     {
       "id": 26,
@@ -308,7 +308,7 @@
       "grape_varieties": ["Shiraz"],
       "price": 60.0,
       "discount_for_members": 10,
-      "promotion": 0
+      "promotion": 15
     },
     {
       "id": 27,
@@ -320,7 +320,7 @@
       "grape_varieties": ["Sauvignon Blanc"],
       "price": 45.0,
       "discount_for_members": 0,
-      "promotion": 0
+      "promotion": 20
     },
     {
       "id": 28,
@@ -332,7 +332,7 @@
       "grape_varieties": ["Malbec"],
       "price": 35.0,
       "discount_for_members": 15,
-      "promotion": 0
+      "promotion": 10
     },
     {
       "id": 29,
@@ -344,7 +344,7 @@
       "grape_varieties": ["Sangiovese"],
       "price": 40.0,
       "discount_for_members": 0,
-      "promotion": 0
+      "promotion": 8
     },
     {
       "id": 30,
@@ -357,6 +357,66 @@
       "price": 25.0,
       "discount_for_members": 20,
       "promotion": 10
+    },
+    {
+      "id": 31,
+      "name": "Vinho Tinto Sangiovese 2019",
+      "type": "Tinto",
+      "region": "Toscana",
+      "country": "Itália",
+      "year": 2019,
+      "grape_varieties": ["Sangiovese"],
+      "price": 200.0,
+      "discount_for_members": 0,
+      "promotion": 5
+    },
+    {
+      "id": 32,
+      "name": "Vinho Branco Chenin Blanc 2021",
+      "type": "Branco",
+      "region": "Stellenbosch",
+      "country": "África do Sul",
+      "year": 2021,
+      "grape_varieties": ["Chenin Blanc"],
+      "price": 550.0,
+      "discount_for_members": 20,
+      "promotion": 10
+    },
+    {
+      "id": 33,
+      "name": "Vinho Tinto Shiraz 2017",
+      "type": "Tinto",
+      "region": "Barossa Valley",
+      "country": "Austrália",
+      "year": 2017,
+      "grape_varieties": ["Shiraz"],
+      "price": 850.0,
+      "discount_for_members": 10,
+      "promotion": 10
+    },
+    {
+      "id": 34,
+      "name": "Vinho Tinto Shiraz 2017",
+      "type": "Tinto",
+      "region": "Barossa Valley",
+      "country": "Austrália",
+      "year": 2017,
+      "grape_varieties": ["Shiraz"],
+      "price": 850.0,
+      "discount_for_members": 10,
+      "promotion": 5
+    },
+    {
+      "id": 35,
+      "name": "Vinho Branco Viognier 2019",
+      "type": "Branco",
+      "region": "Condrieu",
+      "country": "França",
+      "year": 2019,
+      "grape_varieties": ["Viognier"],
+      "price": 350.0,
+      "discount_for_members": 10,
+      "promotion": 25
     }
   ]
 }
