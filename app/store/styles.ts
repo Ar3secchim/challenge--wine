@@ -1,9 +1,9 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-  grid
+  md:grid flex 
   grid-cols-4
-  mx-auto 
+  xl:mx-auto lg:mx-10 md:mx-6 mx-4
   max-w-6xl 
   my-6
 `;
@@ -16,9 +16,17 @@ const ContainerFlex = tw.div`
 
 const ContainerSubGrid = tw.section`
   col-span-3
-  flex
+  flex justify-center
   flex-wrap
   gap-8
+`;
+
+const ToogleList = tw.section`
+  lg:flex
+  lg:flex-col
+  md:flex
+  md:flex-col
+  hidden
 `;
 
 const Title = tw.h1`
@@ -35,12 +43,22 @@ const SubTitle = tw.h2`
 
 const Text = tw.p`
   text-lg
+  md:text-black text-zinc-700
 `;
 
 const Span = tw.span`
   flex
   gap-1
-  pb-6
+  pb-4
+  md:border-0 border-b 
+  mb-6
+`;
+
+const SpanProduts = tw.span`
+  md:hidden flex
+  justify-center
+  
+  gap-1
 `;
 
 const ListItem = tw.li`
@@ -81,6 +99,18 @@ const SpanContainer = tw.span`
   peer-checked:opacity-100
 `;
 
+const Button = tw.button`
+  flex md:hidden
+  items-center
+  text-sm 
+  font-bold  
+  justify-center
+  text-pink-600
+  border-2 border-pink-600 
+  m-8 p-2
+  rounded-md
+`;
+
 export {
   Container,
   ContainerFlex,
@@ -93,4 +123,7 @@ export {
   InputCheckbox,
   LabelInput,
   SpanContainer,
+  ToogleList,
+  SpanProduts,
+  Button,
 };

@@ -1,8 +1,8 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-  w-64
-  h-[387px]
+  md:w-64 w-40
+  h-[387px] 
 `;
 
 const ContainerFlex = tw.div`
@@ -14,6 +14,7 @@ const ContainerCard = tw.div`
   h-[333px]
   bg-white
   shadow-lg
+  lg:rounded-none rounded-md
   p-5
   mb-4
   flex
@@ -42,7 +43,7 @@ const Tag = tw.span`
 `;
 
 const TextPrice = tw.span`
-  text-xs
+  md:text-xs text-[10px]
   text-center
   text-[#888888]
   font-bold
@@ -52,8 +53,9 @@ const TextPrice = tw.span`
 `;
 
 const Text = tw.p`
-  text-sm
-  font-bold
+  md:text-sm text-xs
+  md:font-bold font-normal
+  text-center
   mr-1 
 `;
 
@@ -63,13 +65,13 @@ const TextPriceUnderline = tw(TextPrice)`
 
 const TextPriceSocio = tw(TextPrice)`
   text-pink-700
-  text-2xl
+  md:text-2xl  text-base
   p-0
   pl-1
 `;
 const TextPriceSocioBase = tw(TextPrice)`
   text-pink-700
-  text-sm
+  md:text-sm text-sm
   p-0 
 `;
 

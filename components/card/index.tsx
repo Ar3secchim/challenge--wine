@@ -36,7 +36,7 @@ export function Card({
         <div>
           <Image width={180} src={Wine} alt="selo da black wine " />
           <Image
-            className="translate-x-40 -translate-y-10"
+            className="md:translate-x-40 md:-translate-y-10 -translate-y-5 "
             src={Selo}
             alt="selo da black wine "
           />

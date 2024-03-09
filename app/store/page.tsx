@@ -8,9 +8,12 @@ import {
   ListItem,
   Span,
   SpanContainer,
+  SpanProduts,
   SubTitle,
   Text,
   Title,
+  ToogleList,
+  Button
 } from "./styles";
 import { Header } from "@/components/header";
 import { Pagination } from "@/components/pagination";
@@ -35,7 +38,7 @@ export default async function Store() {
     <main>
       <Header />
       <Container>
-        <section>
+        <ToogleList>
           <Title>Refine sua busca</Title>
           <SubTitle>Por preço</SubTitle>
 
@@ -65,7 +68,7 @@ export default async function Store() {
               <LabelInput htmlFor="check">Até R$40 </LabelInput>
             </ListItem>
           </ContainerFlex>
-        </section>
+        </ToogleList>
 
         <ContainerFlex>
           <Span>
@@ -79,6 +82,16 @@ export default async function Store() {
             })}
           </ContainerSubGrid>
           <Pagination />
+
+          <Button type="button">Mostrar mais</Button>
+
+          <SpanProduts>
+            <Text> Exibindo</Text>
+            <SubTitle>{produtos?.length}</SubTitle>
+            <Text> de </Text>
+            <SubTitle>{produtos?.length}</SubTitle>
+            <Text> produtos no total</Text>
+          </SpanProduts>
         </ContainerFlex>
       </Container>
     </main>
