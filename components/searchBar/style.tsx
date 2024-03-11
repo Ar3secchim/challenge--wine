@@ -18,8 +18,8 @@ const ContainerInput = tw.div`
   items-center
   bg-white
   w-full
-  xl:mx-44
-  lg:mx-20
+  xl:mx-32
+  lg:mx-8
   md:mx-0
 `;
 

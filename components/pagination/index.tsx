@@ -10,6 +10,7 @@ type PaginationProps = {
 
 const VISIBLE_PAGES = 3;
 export function Pagination({ page, limit, total }: PaginationProps) {
+  
   const { pages, isCurrentPage, totalPages } = usePagination({
     page,
     limit,

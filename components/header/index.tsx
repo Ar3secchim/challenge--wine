@@ -6,17 +6,16 @@ import User from "@/assets/icons/conta.svg";
 import { SearchBar } from "../searchBar";
 import { Circle, Container, List, ListItem, NavBar } from "./styles";
 import { Menu } from "../menu";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 
 export function Header() {
   const [isSearchOpen, setIsSearhOpen] = useState(false);
-
   const handleClick = (): void => {
     setIsSearhOpen(!isSearchOpen);
   };
 
   return (
-    <NavBar >
+    <NavBar>
       <Container>
         <Menu />
         <Image src={Logo} alt="logo da wine preta" />
@@ -67,9 +66,6 @@ export function Header() {
           />
         </button>
       </Container>
-      {isSearchOpen && (
-        <SearchBar searchChange={undefined} searchTerm={undefined} />
-      )}
     </NavBar>
   );
 }

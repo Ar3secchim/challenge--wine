@@ -18,9 +18,10 @@ import { PriceRangeList } from "@/components/priceRangeList";
 
 import { Suspense } from "react";
 import { getPageProducts } from "../api/products/getProdutsPage";
+import { SearchBar } from "@/components/searchBar";
 
 type PageProps = {
-  searchParams: { page?: string; perPage?: string };
+  searchParams: { page?: string; perPage?: string; query?: string };
 };
 
 const ranges = [
@@ -33,14 +34,26 @@ const ranges = [
 ];
 
 export default async function Store({ searchParams }: PageProps) {
-  const page = Number(searchParams?.page) || 1;
-  const limit = Number(searchParams?.perPage) || 9;
+  let page = Number(searchParams?.page) || 1;
+  let limit = Number(searchParams?.perPage) || 9;
+  let query = searchParams?.query || "";
 
   const { data, metaData } = await getPageProducts(page, limit);
+  let listData = data;
+  let totalItems = metaData.totalItems.length;
+
+  if (query) {
+    listData = metaData.totalItems.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+    totalItems = listData.length;
+  }
 
   return (
     <main>
       <Header />
+      <SearchBar />
+
       <Container>
         <ToogleListContainer>
           <Title>Refine sua busca</Title>
@@ -55,22 +68,18 @@ export default async function Store({ searchParams }: PageProps) {
 
         <ContainerFlex>
           <Span>
-            <SubTitle>{metaData.totalProducts}</SubTitle>
+            <SubTitle>{totalItems}</SubTitle>
             <Text> produtos encontrados</Text>
           </Span>
           <ContainerSubGrid>
             <Suspense fallback={<div>Loading...</div>}>
-              {data?.map((details) => {
+              {listData.map((details) => {
                 return <Card key={details.id} {...details} />;
               })}
             </Suspense>
           </ContainerSubGrid>
-
-          <Pagination
-            limit={limit}
-            page={page}
-            total={metaData.totalProducts}
-          />
+          
+          <Pagination limit={limit} page={page} total={totalItems} />
 
           <Button type="button">Mostrar mais</Button>
 

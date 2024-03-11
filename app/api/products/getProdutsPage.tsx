@@ -13,14 +13,13 @@ export async function getPageProducts(page: number, limit: number) {
     }
     const results: Products[] = await res.json();
     const totalItems: Products[] = await resultLength.json();
-    const totalProducts: number = totalItems.length;
 
     return {
       data: results.data,
       metaData: {
         page,
         limit,
-        totalProducts,
+        totalItems,
       },
     };
   } catch (error) {
