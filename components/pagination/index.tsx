@@ -8,6 +8,7 @@ type PaginationProps = {
   limit: number;
 };
 
+const VISIBLE_PAGES = 3;
 export function Pagination({ page, limit, total }: PaginationProps) {
   const { pages, isCurrentPage, totalPages } = usePagination({
     page,
@@ -15,30 +16,62 @@ export function Pagination({ page, limit, total }: PaginationProps) {
     total,
   });
 
-  console.log(pages);
+  const PagesRender = (pages) => {
+    const maxVisiblePages = Math.min(totalPages, VISIBLE_PAGES);
+    let startIndex, endIndex;
+
+    if (totalPages == VISIBLE_PAGES) {
+      startIndex = page - Math.floor(VISIBLE_PAGES / 2);
+      endIndex = startIndex + maxVisiblePages - 1;
+    }
+
+    if (totalPages <= VISIBLE_PAGES) {
+      startIndex = 0;
+      endIndex = totalPages - 1;
+    }
+
+    if (page <= Math.ceil(VISIBLE_PAGES / 2)) {
+      startIndex = 0;
+      endIndex = maxVisiblePages - 1;
+    }
+
+    if (page >= totalPages - Math.ceil(VISIBLE_PAGES / 2) + 1) {
+      startIndex = totalPages - maxVisiblePages;
+      endIndex = totalPages - 1;
+    }
+
+    return pages.slice(startIndex, endIndex + 1).map((page, index) => (
+      <Link href={`?page=${page}&limit=${limit}`} key={index}>
+        <ButtonPagination
+          key={index}
+          $className={
+            isCurrentPage(page)
+              ? "currentPage"
+              : isCurrentPage(page - 1) || isCurrentPage(page + 1)
+              ? "nextPage"
+              : ""
+          }
+        >
+          {page}
+        </ButtonPagination>
+      </Link>
+    ));
+  };
+
   return (
     <Container>
-      {pages.map((page) => (
-        <Link key={page} href={`?_page=${page}`}>
-          <ButtonPagination
-            key={page}
-            $className={page == page ? "currentPage" : ""}
-          >
-            {page}
-          </ButtonPagination>
-        </Link>
-      ))}
+      {PagesRender(pages)}
 
-      <Link key={page} href={`?_page=${page}`}>
-        <Button>
+      <Link key={page} href={`?page=${page + 1}&limit=${limit}`}>
+        <Button disabled={page === totalPages}>
           <span>
-            {page === totalPages - 2 || page === totalPages - 1 ? "" : "... "}
+            {page == totalPages - 1 || page == totalPages ? "" : "..."}
           </span>
           Próximo
           {[...Array(2)].map((_, index) => (
             <SVGElement
               key={index}
-              $className={page === totalPages - 1 ? "disabled" : ""}
+              $className={page === totalPages ? "disabled" : ""}
               width="9"
               height="15"
               fill="none"

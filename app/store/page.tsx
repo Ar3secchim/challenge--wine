@@ -16,12 +16,11 @@ import { Header } from "@/components/header";
 import { Pagination } from "@/components/pagination";
 import { PriceRangeList } from "@/components/priceRangeList";
 
-import { getAllProducts } from "../api/products/getAllProduts";
 import { Suspense } from "react";
 import { getPageProducts } from "../api/products/getProdutsPage";
 
 type PageProps = {
-  searchParams: { page?: string; limit?: string };
+  searchParams: { page?: string; perPage?: string };
 };
 
 const ranges = [
@@ -35,7 +34,7 @@ const ranges = [
 
 export default async function Store({ searchParams }: PageProps) {
   const page = Number(searchParams?.page) || 1;
-  const limit = Number(searchParams?.limit) || 9;
+  const limit = Number(searchParams?.perPage) || 9;
 
   const { data, metaData } = await getPageProducts(page, limit);
 

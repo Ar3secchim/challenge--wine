@@ -3,7 +3,7 @@ import { Products } from "@/types/products";
 export async function getPageProducts(page: number, limit: number) {
   try {
     const res = await fetch(
-      `http://localhost:8080/wines?_page=${page}&_limit=${limit}`
+      `http://localhost:8080/wines?_page=${page}&_per_page=${limit}`
     );
 
     const resultLength = await fetch(`http://localhost:8080/wines?_page=`);
@@ -16,7 +16,7 @@ export async function getPageProducts(page: number, limit: number) {
     const totalProducts: number = totalItems.length;
 
     return {
-      data: results,
+      data: results.data,
       metaData: {
         page,
         limit,
