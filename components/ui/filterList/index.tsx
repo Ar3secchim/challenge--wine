@@ -2,18 +2,21 @@ import { InputCheckbox, LabelInput, SpanContainer, ListItem } from "./styles";
 
 interface RangesList {
   key: number;
-  range: {
-    min: number;
-    max: number;
-    label: string;
-  };
+  min: number;
+  max: number;
+  label: string;
+  OnChahge : 
 }
 
-export function PriceRangeList({ range, key }: RangesList) {
+export function FilterList(props: RangesList) {
   return (
     <ListItem>
-      <LabelInput key={key} htmlFor={`check-${range.min}`}>
-        <InputCheckbox type="checkbox" id={`check-${range.min}`} />
+      <LabelInput htmlFor={`check-${props.min}`}>
+        <InputCheckbox
+          type="checkbox"
+          id={`check-${props.min}`}
+          onChange={OnChange}
+        />
         <SpanContainer>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +34,7 @@ export function PriceRangeList({ range, key }: RangesList) {
           </svg>
         </SpanContainer>
       </LabelInput>
-      <LabelInput htmlFor={`check-${range.min}`}>{range.label}</LabelInput>
+      <LabelInput htmlFor={`check-${props.min}`}>{props.label}</LabelInput>
     </ListItem>
   );
 }

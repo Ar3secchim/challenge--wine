@@ -4,19 +4,22 @@ import { usePagination } from "./hook/usePagination";
 
 type PaginationProps = {
   page: number;
-  total: number;
   limit: number;
+  query: string;
+  totalItems: number;
 };
 
 const VISIBLE_PAGES = 3;
-export function Pagination({ page, limit, total }: PaginationProps) {
-  
+export function Pagination(props: PaginationProps) {
+  const { page = 1, limit = 9, query, totalItems } = props;
+
   const { pages, isCurrentPage, totalPages } = usePagination({
     page,
     limit,
-    total,
+    totalItems,
   });
 
+  
   const PagesRender = (pages) => {
     const maxVisiblePages = Math.min(totalPages, VISIBLE_PAGES);
     let startIndex, endIndex;
@@ -63,7 +66,7 @@ export function Pagination({ page, limit, total }: PaginationProps) {
     <Container>
       {PagesRender(pages)}
 
-      <Link key={page} href={`?page=${page + 1}&limit=${limit}`}>
+      <Link key={page} href={`?page=${Number(page) + 1}&limit=${limit}`}>
         <Button disabled={page === totalPages}>
           <span>
             {page == totalPages - 1 || page == totalPages ? "" : "..."}

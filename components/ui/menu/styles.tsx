@@ -1,5 +1,5 @@
 import tw from "tailwind-styled-components";
-import { ButtonStyle } from "../button/style";
+import { ButtonStyle } from "@/components/ui/button/style";
 
 interface ButtonProps {
   $link?: boolean;

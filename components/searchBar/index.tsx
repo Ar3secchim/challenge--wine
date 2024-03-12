@@ -1,10 +1,9 @@
 "use client";
-import { Button } from "../button";
+import { Button } from "../ui/button";
 import { Container, ContainerInput, Input } from "./style";
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export function SearchBar() {
-  const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
@@ -15,11 +14,11 @@ export function SearchBar() {
   };
 
   function handleSearch(term: string) {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams();
     if (term) {
-      params.set("query", term);
+      params.set("name", term);
     } else {
-      params.delete("query");
+      params.delete("name");
     }
     replace(`${pathname}?${params.toString()}`);
   }
