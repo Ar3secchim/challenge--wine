@@ -13,14 +13,13 @@ import {
 import { Card } from "@/ui/card";
 import { Header } from "@/components/header";
 import { Pagination } from "@/components/pagination";
-import { FilterList } from "@/ui/filterList";
+import { Filter } from "@/components/filter";
+import { SearchBar } from "@/components/searchBar";
 
 import { Suspense } from "react";
 import { getPageProducts } from "../api/products/getProdutsPage";
-import { SearchBar } from "@/components/searchBar";
-import { useParams } from "next/navigation";
-import { getProductsName } from "../api/products/getProdutsName";
-import { Filter } from "@/components/filter";
+import { getProductsQuery } from "../api/products/getProductsQuery";
+import { getAllProducts } from "../api/products/getAllProduts";
 
 type PageProps = {
   searchParams: {
@@ -34,22 +33,30 @@ type PageProps = {
 export default async function Store({ searchParams }: PageProps) {
   let page = Number(searchParams?.page) || 1;
   let limit = Number(searchParams?.perPage) || 9;
-  let query = searchParams?.name || searchParams?.price || "";
+  let query = searchParams || "";
 
   const { data, metaData } = await getPageProducts(page, limit);
   let listData = data;
   let totalItems = metaData.totalItems.length;
 
-  if (query) {
-    const { results, totalListItems } = await getProductsName(query);
+  if (query.price) {
+    const { results, resultLength } = await getProductsQuery(query.price);
     listData = results;
-    totalItems = totalListItems;
+    totalItems = resultLength;
+  }
+
+  if (query.name) {
+    const results = await getAllProducts();
+    listData = results.filter((products) =>
+      products.name.toLowerCase().includes(query.name.trim().toLowerCase())
+    );
+    totalItems = listData.length;
   }
 
   return (
     <main>
       <Header />
-      {/* <SearchBar /> */}
+      <SearchBar />
 
       <Container>
         <ToogleListContainer>
@@ -75,7 +82,7 @@ export default async function Store({ searchParams }: PageProps) {
             </Suspense>
           </ContainerSubGrid>
 
-          {!query && <Pagination totalItems={totalItems} {...searchParams} />}
+          <Pagination totalItems={totalItems} {...searchParams} />
 
           <Button type="button">Mostrar mais</Button>
 

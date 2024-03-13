@@ -26,17 +26,17 @@ interface RangesList {
 }
 
 export function Filter() {
-  const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   function handleFilter(term) {
     const params = new URLSearchParams();
-    const minPrice = term.min.toString();
-    const maxPrice = term.max.toString();
-    const query = `{_gt=${minPrice}&price_lt=${maxPrice}}`;
 
     if (term) {
+      const minPrice = term.min.toString();
+      const maxPrice = term.max.toString();
+
+      const query = `price_gt=${minPrice}&price_lt=${maxPrice}`;
       params.set("price", query);
     } else {
       params.delete("price");
@@ -52,12 +52,16 @@ export function Filter() {
             <InputCheckbox
               type="checkbox"
               id={`check-${range.min}`}
-              onChange={() =>
-                handleFilter({
-                  min: `${range.min}`,
-                  max: `${range.max}`,
-                })
-              }
+              onChange={(e) => {
+                if (e.target.checked) {
+                  handleFilter({
+                    min: `${range.min}`,
+                    max: `${range.max}`,
+                  });
+                } else {
+                  handleFilter("");
+                }
+              }}
             />
             <SpanContainer>
               <svg
