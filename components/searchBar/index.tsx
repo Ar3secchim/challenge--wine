@@ -1,18 +1,37 @@
-import { Button } from "../button";
+"use client";
+import { searchParamsProps } from "@/types/searchParams";
+import { Button } from "../ui/button";
 import { Container, ContainerInput, Input } from "./style";
+import { usePathname, useRouter } from "next/navigation";
+import { KeyboardEvent } from "react";
 
-export function SearchBar({ searchChange, searchTerm }) {
+export function SearchBar({ searchParams }: searchParamsProps) {
+  const pathname = usePathname();
+  const { push } = useRouter();
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch(event.target.value);
+    }
+  };
+
+  function handleSearch(term: string) {
+    const params = new URLSearchParams();
+    if (term) {
+      params.set("name", term);
+    } else {
+      params.delete("name");
+    }
+
+    push(`${pathname}?${params.toString()}`);
+  }
+
   return (
     <Container>
       <ContainerInput>
-        <Input
-          type="text"
-          placeholder="Pesquisar"
-          value={searchTerm}
-          onChange={searchChange}
-        />
+        <Input type="text" placeholder="Pesquisar" onKeyDown={handleKeyDown} />
 
-        <Button link={true} >
+        <Button link={true}>
           aperte enter para buscar
           <svg
             width="46"

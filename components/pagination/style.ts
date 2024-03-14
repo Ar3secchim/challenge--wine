@@ -6,7 +6,7 @@ interface Props {
 
 const Container = tw.div`
   container
-  flex
+  md:flex hidden
   gap-4
   justify-center
   items-center

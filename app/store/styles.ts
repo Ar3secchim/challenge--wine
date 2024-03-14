@@ -1,34 +1,32 @@
 import tw from "tailwind-styled-components";
 
 const Container = tw.div`
-  flex
-  flex-col
-  w-full
-  mx-auto 
+  md:grid flex 
+  grid-cols-4
+  xl:mx-auto lg:mx-10 md:mx-6 mx-4
   max-w-6xl 
-  mb-4
+  my-6
 `;
 
 const ContainerFlex = tw.div`
   flex
   flex-col
-`;
-
-const ContainerGrid = tw.section`
-  grid 
-  grid-cols-4 
-  grid-rows-1 
-  gap-4
-  mt-10
-  md:mx-8
-  sm:mx-8
+  col-span-3  
 `;
 
 const ContainerSubGrid = tw.section`
- col-span-3 
- flex 
- flex-col 
- gap-4
+  col-span-3
+  flex lg:justify-normal justify-center
+  flex-wrap
+  gap-8
+`;
+
+const ToogleListContainer = tw.section`
+  lg:flex
+  lg:flex-col
+  md:flex
+  md:flex-col
+  hidden
 `;
 
 const Title = tw.h1`
@@ -45,63 +43,45 @@ const SubTitle = tw.h2`
 
 const Text = tw.p`
   text-lg
+  md:text-black text-zinc-700
 `;
 
 const Span = tw.span`
   flex
   gap-1
-  pb-6
+  pb-4
+  md:border-0 border-b 
+  mb-6
 `;
 
-const ListItem = tw.li`
-  flex
+const SpanProduts = tw.span`
+  md:hidden flex
+  justify-center
+  
+  gap-1
+`;
+
+const Button = tw.button`
+  flex md:hidden
   items-center
-  list-none
-  gap-2
-  text-base
-  my-3
-`;
-
-const InputCheckbox = tw.input`
-  appearance-none 
-  peer  
-  h-5 w-5 
-  cursor-pointer 
-  rounded-full 
-  border-2 border-zinc-600 
-  transition-all before:absolute 
-  checked:border-pink-700 checked:bg-pink-700 checked:before:bg-pink-700 hover:before:opacity-10
-`;
-
-const LabelInput = tw.label`
-  relative 
-  flex 
-  items-center  
-  rounded-full 
-  cursor-pointer
-`;
-
-const SpanContainer = tw.span`
-  absolute
-  text-white 
-  transition-opacity -translate-y-2/4 -translate-x-2/4 
-  opacity-0 
-  pointer-events-none 
-  top-2/4 left-2/4  
-  peer-checked:opacity-100
+  text-sm 
+  font-bold  
+  justify-center
+  text-pink-600
+  border-2 border-pink-600 
+  m-8 p-2
+  rounded-md
 `;
 
 export {
   Container,
   ContainerFlex,
-  ContainerGrid,
   ContainerSubGrid,
   Title,
   SubTitle,
   Text,
   Span,
-  ListItem,
-  InputCheckbox,
-  LabelInput,
-  SpanContainer,
+  ToogleListContainer,
+  SpanProduts,
+  Button,
 };

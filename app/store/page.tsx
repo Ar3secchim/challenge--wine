@@ -1,69 +1,91 @@
-import { Card } from "@/components/card";
 import {
   Container,
   ContainerFlex,
-  ContainerGrid,
   ContainerSubGrid,
-  InputCheckbox,
-  LabelInput,
-  ListItem,
   Span,
-  SpanContainer,
+  SpanProduts,
   SubTitle,
   Text,
   Title,
+  ToogleListContainer,
+  Button,
 } from "./styles";
+import { Card } from "@/ui/card";
 import { Header } from "@/components/header";
 import { Pagination } from "@/components/pagination";
+import { Filter } from "@/components/filter";
+import { SearchBar } from "@/components/searchBar";
 
-export default function Store() {
+import { Suspense } from "react";
+import { getPageProducts } from "../api/products/getProdutsPage";
+import { getProductsQuery } from "../api/products/getProductsQuery";
+import { getAllProducts } from "../api/products/getAllProduts";
+import { searchParamsProps } from "@/types/searchParams";
+
+export default async function Store({ searchParams }: searchParamsProps) {
+  let page = Number(searchParams?.page) || 1;
+  let limit = Number(searchParams?.perPage) || 9;
+  let query = searchParams || "";
+
+  const { data, metaData } = await getPageProducts(page, limit);
+  let listData = data;
+  let totalItems = metaData.totalItems.length;
+
+  if (query.price) {
+    const { results, resultLength } = await getProductsQuery(query.price);
+    listData = results;
+    totalItems = resultLength;
+  }
+
+  if (query.name) {
+    const results = await getAllProducts();
+    listData = results.filter((products) =>
+      products.name.toLowerCase().includes(query.name.trim().toLowerCase())
+    );
+    totalItems = listData.length;
+  }
+
   return (
     <main>
       <Header />
+      <SearchBar />
+
       <Container>
-        <ContainerGrid>
-          <section>
-            <Title>Refine sua busca</Title>
-            <SubTitle>Por preço</SubTitle>
+        <ToogleListContainer>
+          <Title>Refine sua busca</Title>
+          <SubTitle>Por preço</SubTitle>
 
-            <ContainerFlex>
-              <ListItem>
-                <LabelInput htmlFor="check">
-                  <InputCheckbox type="checkbox" id="check" />
+          <ContainerFlex>
+            <Filter />
+          </ContainerFlex>
+        </ToogleListContainer>
 
-                  <SpanContainer>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      width="16"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      stroke-width="1"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </SpanContainer>
-                </LabelInput>
-
-                <LabelInput htmlFor="check">Até R$40 </LabelInput>
-              </ListItem>
-            </ContainerFlex>
-          </section>
+        <ContainerFlex>
+          <Span>
+            <SubTitle>{totalItems}</SubTitle>
+            <Text> produtos encontrados</Text>
+          </Span>
 
           <ContainerSubGrid>
-            <Span>
-              <SubTitle>49</SubTitle>
-              <Text> produtos encontrados</Text>
-            </Span>
-
-            <Card />
+            <Suspense fallback={<div>Loading...</div>}>
+              {listData.map((details) => {
+                return <Card key={details.id} {...details} />;
+              })}
+            </Suspense>
           </ContainerSubGrid>
-        </ContainerGrid>
-        <Pagination />
+
+          <Pagination totalItems={totalItems} {...searchParams} />
+
+          <Button type="button">Mostrar mais</Button>
+
+          <SpanProduts>
+            <Text> Exibindo</Text>
+            <SubTitle>{data?.length}</SubTitle>
+            <Text> de </Text>
+            <SubTitle>{data?.length}</SubTitle>
+            <Text> produtos no total</Text>
+          </SpanProduts>
+        </ContainerFlex>
       </Container>
     </main>
   );
