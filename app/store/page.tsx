@@ -20,17 +20,9 @@ import { Suspense } from "react";
 import { getPageProducts } from "../api/products/getProdutsPage";
 import { getProductsQuery } from "../api/products/getProductsQuery";
 import { getAllProducts } from "../api/products/getAllProduts";
+import { searchParamsProps } from "@/types/searchParams";
 
-type PageProps = {
-  searchParams: {
-    page?: string;
-    perPage?: string;
-    name?: string;
-    price?: string;
-  };
-};
-
-export default async function Store({ searchParams }: PageProps) {
+export default async function Store({ searchParams }: searchParamsProps) {
   let page = Number(searchParams?.page) || 1;
   let limit = Number(searchParams?.perPage) || 9;
   let query = searchParams || "";

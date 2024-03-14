@@ -1,11 +1,13 @@
 "use client";
+import { searchParamsProps } from "@/types/searchParams";
 import { Button } from "../ui/button";
 import { Container, ContainerInput, Input } from "./style";
 import { usePathname, useRouter } from "next/navigation";
+import { KeyboardEvent } from "react";
 
-export function SearchBar() {
+export function SearchBar({ searchParams }: searchParamsProps) {
   const pathname = usePathname();
-  const { replace } = useRouter();
+  const { push } = useRouter();
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -20,7 +22,8 @@ export function SearchBar() {
     } else {
       params.delete("name");
     }
-    replace(`${pathname}?${params.toString()}`);
+
+    push(`${pathname}?${params.toString()}`);
   }
 
   return (
