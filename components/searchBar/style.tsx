@@ -34,4 +34,4 @@ const Input = tw.input`
   focus:outline-none
 `;
 
-export { Container, Input, ContainerInput };
+export { Container, ContainerInput, Input };

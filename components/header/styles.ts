@@ -1,5 +1,9 @@
 import tw from "tailwind-styled-components";
 
+interface Props {
+  isActive: boolean;
+}
+
 const NavBar = tw.nav`
   text-neo
   flex
@@ -16,13 +20,12 @@ const NavBar = tw.nav`
 const Container = tw.div`
   flex 
   gap-4
-  lg:gap-10
+  mx-auto
 `;
 
 const List = tw.ul`
   hidden
   md:flex-row
-  lg:pl-10
   lg:gap-12
   lg:flex
 `;
@@ -33,13 +36,21 @@ const ListItem = tw.li`
   lg:flex
 `;
 
-const Circle = tw.circle`
+const Circle = tw.circle<Props>`
   stroke-none
   lg:stroke-black
+
+  {${(i) => (i.isActive == true ? "lg:stroke-pink-700" : "")}}
 `;
 
-const Button = tw.button`
-
+const ItemsCar = tw.span`
+  absolute top-12
+  w-5 h-5
+  rounded-full
+  bg-slate-200
+  text-pink-700
+  text-center
+  text-sm
 `;
 
-export { NavBar, List, ListItem, Container, Circle, Button };
+export { Circle, Container, List, ListItem, NavBar, ItemsCar };

@@ -1,11 +1,11 @@
 "use client";
 import { searchParamsProps } from "@/types/searchParams";
-import { Button } from "../ui/button";
-import { Container, ContainerInput, Input } from "./style";
 import { usePathname, useRouter } from "next/navigation";
 import { KeyboardEvent } from "react";
+import { Button } from "../ui/button";
+import { Container, ContainerInput, Input } from "./style";
 
-export function SearchBar({ searchParams }: searchParamsProps) {
+export function SearchBar() {
   const pathname = usePathname();
   const { push } = useRouter();
 

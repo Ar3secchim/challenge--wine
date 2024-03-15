@@ -1,4 +1,10 @@
+import { Filter } from "@/components/filter";
+import { Header } from "@/components/header";
+import { Pagination } from "@/components/pagination";
+import { SearchBar } from "@/components/searchBar";
+import { Card } from "@/ui/card";
 import {
+  Button,
   Container,
   ContainerFlex,
   ContainerSubGrid,
@@ -8,19 +14,14 @@ import {
   Text,
   Title,
   ToogleListContainer,
-  Button,
 } from "./styles";
-import { Card } from "@/ui/card";
-import { Header } from "@/components/header";
-import { Pagination } from "@/components/pagination";
-import { Filter } from "@/components/filter";
-import { SearchBar } from "@/components/searchBar";
 
-import { Suspense } from "react";
-import { getPageProducts } from "../api/products/getProdutsPage";
-import { getProductsQuery } from "../api/products/getProductsQuery";
-import { getAllProducts } from "../api/products/getAllProduts";
 import { searchParamsProps } from "@/types/searchParams";
+import { Suspense } from "react";
+import { getAllProducts } from "../api/products/getAllProduts";
+import { getProductsQuery } from "../api/products/getProductsQuery";
+import { getPageProducts } from "../api/products/getProdutsPage";
+import { Frown } from "lucide-react";
 
 export default async function Store({ searchParams }: searchParamsProps) {
   let page = Number(searchParams?.page) || 1;
@@ -48,7 +49,6 @@ export default async function Store({ searchParams }: searchParamsProps) {
   return (
     <main>
       <Header />
-      <SearchBar />
 
       <Container>
         <ToogleListContainer>
@@ -61,13 +61,23 @@ export default async function Store({ searchParams }: searchParamsProps) {
         </ToogleListContainer>
 
         <ContainerFlex>
-          <Span>
-            <SubTitle>{totalItems}</SubTitle>
-            <Text> produtos encontrados</Text>
-          </Span>
+          {totalItems == 0 ? (
+            ""
+          ) : (
+            <Span>
+              <SubTitle>{totalItems}</SubTitle>
+              <Text> produtos encontrados</Text>
+            </Span>
+          )}
 
           <ContainerSubGrid>
             <Suspense fallback={<div>Loading...</div>}>
+              {totalItems == 0 && (
+                <SubTitle>
+                  <Frown />
+                  Nenhum produto foi encontrado
+                </SubTitle>
+              )}
               {listData.map((details) => {
                 return <Card key={details.id} {...details} />;
               })}
