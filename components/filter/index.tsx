@@ -1,13 +1,11 @@
 "use client";
-import { use } from "react";
-import { FilterList } from "../ui/filterList";
 import {
   InputCheckbox,
   LabelInput,
-  SpanContainer,
   ListItem,
+  SpanContainer,
 } from "@/ui/filterList/styles";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const ranges = [
   { min: 0, max: 40, label: "até R$ 40" },

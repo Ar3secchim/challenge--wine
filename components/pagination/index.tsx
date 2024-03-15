@@ -1,6 +1,6 @@
-import { Button, ButtonPagination, Container, SVGElement } from "./style";
 import Link from "next/link";
 import { usePagination } from "./hook/usePagination";
+import { Button, ButtonPagination, Container, SVGElement } from "./style";
 
 type PaginationProps = {
   page: number;
