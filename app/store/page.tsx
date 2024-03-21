@@ -23,6 +23,17 @@ import { getProductsQuery } from "../api/products/getProductsQuery";
 import { getPageProducts } from "../api/products/getProdutsPage";
 import { Frown } from "lucide-react";
 
+const ranges = [
+  [
+    { min: 0, max: 40, label: "até R$ 40" },
+    { min: 40, max: 60, label: "R$ 40 a R$ 60" },
+    { min: 60, max: 100, label: "R$ 60 a R$ 100" },
+    { min: 100, max: 200, label: "R$ 100 a R$ 200" },
+    { min: 200, max: 500, label: "R$ 100 a R$ 500" },
+    { min: 500, max: Infinity, label: "acima de R$ 500" },
+  ],
+];
+
 export default async function Store({ searchParams }: searchParamsProps) {
   let page = Number(searchParams?.page) || 1;
   let limit = Number(searchParams?.perPage) || 9;
@@ -72,19 +83,20 @@ export default async function Store({ searchParams }: searchParamsProps) {
 
           <ContainerSubGrid>
             <Suspense fallback={<div>Loading...</div>}>
-              {totalItems == 0 && (
-                <SubTitle>
-                  <Frown />
-                  Nenhum produto foi encontrado
-                </SubTitle>
-              )}
               {listData.map((details) => {
                 return <Card key={details.id} {...details} />;
               })}
             </Suspense>
           </ContainerSubGrid>
 
-          <Pagination totalItems={totalItems} {...searchParams} />
+          {totalItems == 0 ? (
+            <SubTitle>
+              <Frown />
+              Nenhum produto foi encontrado
+            </SubTitle>
+          ) : (
+            <Pagination totalItems={totalItems} {...searchParams} />
+          )}
 
           <Button type="button">Mostrar mais</Button>
 
