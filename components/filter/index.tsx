@@ -7,21 +7,18 @@ import {
 } from "@/ui/filterList/styles";
 import { usePathname, useRouter } from "next/navigation";
 
-const ranges = [
-  { min: 0, max: 40, label: "até R$ 40" },
-  { min: 40, max: 60, label: "R$ 40 a R$ 60" },
-  { min: 60, max: 100, label: "R$ 60 a R$ 100" },
-  { min: 100, max: 200, label: "R$ 100 a R$ 200" },
-  { min: 200, max: 500, label: "R$ 100 a R$ 500" },
-  { min: 500, max: Infinity, label: "acima de R$ 500" },
-];
-
-interface RangesList {
-  key: number;
-  min: number;
-  max: number;
-  label: string;
-}
+const ranges = {
+  prices: [
+    { min: 0, max: 40, label: "até R$ 40" },
+    { min: 40, max: 60, label: "R$ 40 a R$ 60" },
+    { min: 60, max: 100, label: "R$ 60 a R$ 100" },
+    { min: 100, max: 200, label: "R$ 100 a R$ 200" },
+    { min: 200, max: 500, label: "R$ 100 a R$ 500" },
+    { min: 500, max: Infinity, label: "acima de R$ 500" },
+  ],
+  states:[],
+  types:[],
+};
 
 export function Filter() {
   const pathname = usePathname();
@@ -44,7 +41,7 @@ export function Filter() {
 
   return (
     <>
-      {ranges.map((range, i) => (
+      {ranges.prices.map((range, i) => (
         <ListItem key={i}>
           <LabelInput htmlFor={`check-${range.min}`}>
             <InputCheckbox
@@ -81,6 +78,8 @@ export function Filter() {
           <LabelInput htmlFor={`check-${range.min}`}>{range.label}</LabelInput>
         </ListItem>
       ))}
+
+      
     </>
   );
 }
